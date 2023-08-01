@@ -1,0 +1,53 @@
+{% extends "showroom/base.html" %}
+
+
+{%block content %}
+
+<h1>Available Models</h1>
+<div class="container">
+    <div class="row ">
+        <div class="text-end">
+        <div class="col-12">
+            <a href="{% url 'showroom:models_list' %}" class="btn btn-primary mb-3">Show All</a>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for model in models %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model.name }}" style="height: 250px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ model.name }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<h1>We deal in the following Brands</h1>
+<div class="container">
+    <div class="row ">
+        <div class="text-end">
+        <div class="col-12">
+            <a href="{% url 'showroom:brands_list' %}" class="btn btn-primary mb-3">Show All</a>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for brand in brands %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ brand.logo.url }}" class="card-img-top" alt="{{ brand.name }}" style="height: 150px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ brand.name }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

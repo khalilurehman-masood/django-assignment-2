@@ -1,0 +1,23 @@
+{%extends "showroom/base.html" %}
+
+{%block title %} Brands {%endblock%}
+{%block content %}
+<div class="container">
+    <div class="row">
+        {% for brand in brands %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 " style="margin-top: 20px;">
+                <img src="{{ brand.logo.url }}" class="card-img-top" alt="{{ brand.name }}" style="height: 150px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ brand.name }}</h5>
+                    <p class="card-text">{{ brand.description }}</p>
+                        <div class="col-12">
+                            <a href="{% url 'showroom:brand_models' brand.id %}" class="btn btn-primary mb-3">View models in this brand</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{%endblock%}

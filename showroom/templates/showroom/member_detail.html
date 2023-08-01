@@ -1,0 +1,27 @@
+{%extends "showroom/base.html" %}
+
+{%block title %} Model - Detail {%endblock%}
+{%block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 mb-4">
+
+        </div>
+        <div class="col-md-8 mb-4">
+            <div class="card h-100 " style="margin-top: 20px;">
+                <img src="{{ member.image.url }}" class="card-img-top" alt="{{ model.name }}" style="height: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ member.name }}</h5>
+                    <p class="card-text">{{ member.role }}</p>
+                    <strong><p class="card-text">Contact: {{ member.contact_number }}</p></strong>
+                    <p class="card-text"><strong>Email:</strong> {{ member.email }}</p>                    
+
+                    <div class="col-12">
+                        <a href="{% url 'showroom:team_list'%}" class="btn btn-primary mb-3">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

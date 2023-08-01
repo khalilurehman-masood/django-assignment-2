@@ -1,0 +1,41 @@
+{%extends "showroom/base.html" %}
+
+{%block title %} Model - Detail {%endblock%}
+{%block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 mb-4">
+
+        </div>
+        <div class="col-md-8 mb-4">
+            <div class="card h-100 " style="margin-top: 20px;">
+                <img src="{{ model.image.url }}" class="card-img-top" alt="{{ model.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ model.name }}</h5>
+                    <p class="card-text">{{ model.brand }}</p>
+                    <strong><p class="card-text">Price: {{ model.price }} Rs.</p></strong>
+                    <p class="card-text"><strong>Description:</strong> {{ model.description }}</p>
+
+                    <p class="card-text">Year: {{ model.year }}</p>
+                    <ul> Engine: 
+                    <li>Type: {{ model.engine.engine_type }}</li>
+                    <li>displacement: {{ model.engine.displacement }}</li>
+                    <li>Power: {{ model.engine.power }}</li>
+                    </ul>
+
+                
+                    <ul> Features
+                    {%for feature in model.features.all %}
+                    <li>{{feature.name}}: {{feature.description}}</li>
+                    {%endfor%}
+                    </ul>
+
+                    <div class="col-12">
+                        <a href="{% url 'showroom:models_list'%}" class="btn btn-primary mb-3">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,24 @@
+{%extends "showroom/base.html" %}
+
+{%block title %} Team {%endblock%}
+{%block content %}
+<div class="container">
+    <div class="row">
+        {% for member in team %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 " style="margin-top: 20px;">
+                <img src="{{ member.image.url }}" class="card-img-top" alt="{{ member.name }}" style="height: 250px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ member.name }}</h5>
+                    <strong><p class="card-text">{{ model.role }}</p></strong>
+
+                        <div class="col-12">
+                            <a href="{% url 'showroom:member_detail' member.id %}" class="btn btn-primary mb-3">View Details</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{%endblock%}
